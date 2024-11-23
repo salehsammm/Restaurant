@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Reservation>
+
+
+@{
+    ViewData["Title"] = "رزرو ها";
+}
+
+<h1 class="h1-center">گزارش رزرو ها</h1>
+
+<div class="search-container">
+    <form method="get" asp-controller="Admin" asp-action="Reserves">
+        <input type="date" id="orderDate" name="reserveDate" class="search-input" style="position: relative;" />
+        <button type="submit" class="search-button">جستجو</button>
+    </form>
+</div>
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>نام مشتری</th>
+            <th>تلفن همراه</th>
+            <th>تعداد میهمان</th>
+            <th>شماره میز</th>
+            <th>تاریخ و ساعت</th>
+            <th>توضیحات</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.User.FName @item.User.LName</td>
+                <td>@item.User.PhoneNumber</td>
+                <td>@item.NumberOfGuest</td>
+                <td>@item.TableId</td>
+                <td>@item.DateAndTime</td>
+                <td>@item.Description</td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+

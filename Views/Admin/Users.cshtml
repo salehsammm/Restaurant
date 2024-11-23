@@ -1,0 +1,45 @@
+﻿@model IEnumerable<User>
+
+@{
+    ViewData["Title"] = "کاربران";
+}
+
+<div class="container mt-5">
+    <h1 class="mb-4">لیست کاربران</h1>
+
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>نام</th>
+                <th>نام خانوادگی</th>
+                <th>شماره تلفن</th>
+                <th>رمز ورود</th>
+                <th>آدرس</th>
+                <th>تاریخ ثبت نام</th>
+                <th>سطح دسترسی</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.FName</td>
+                    <td>@user.LName</td>
+                    <td>@user.PhoneNumber</td>
+                    <td>@user.Password</td>
+                    <td>@user.Address</td>
+                    <td>@user.RegisterDate.ToString("yyyy / MM / dd")</td>
+                    <td>@(user.IsAdmin ? "ادمین" : "کاربر عادی")</td>
+                    <td>
+                        <a class="btn btn-danger btn-sm" asp-action="RemoveUser" asp-route-userId="@user.Id">حذف</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" asp-action="EditUser" asp-route-userId="@user.Id">ویرایش</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

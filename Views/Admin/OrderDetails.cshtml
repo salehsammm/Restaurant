@@ -1,0 +1,28 @@
+﻿@model Order
+
+@{
+    ViewData["Title"] = "OrderDetails";
+}
+
+<h1>جزئیات سفارش</h1>
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>نام غذا</th>
+            <th>تعداد</th>
+            <th>قیمت</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.OrderDetails)
+        {
+            <tr>
+                <td>@item.Food.Name</td>
+                <td>@item.Quantity</td>
+                <td>@(item.Quantity * item.Price)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

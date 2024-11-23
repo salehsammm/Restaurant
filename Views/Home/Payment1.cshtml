@@ -1,0 +1,12 @@
+﻿@{
+    ViewData["Title"] = "OnlinePayment";
+}
+
+@section DiscountBox {
+	@if (ViewBag.Discount > 0)
+	{
+		<partial name="_DiscountBox" model="@ViewBag.Discount" />
+	}
+}
+
+<h1>پرداخت موفق بود</h1>

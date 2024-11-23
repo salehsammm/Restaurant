@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+    <header id="home" class="header">
+        <div class="overlay text-white text-center">
+            <h1 class="display-2 font-weight-bold my-3">رستوران آزاد</h1>
+            <h2 class="display-4 mb-5">پروژه دانشگاه</h2>
+            <a class="btn btn-lg btn-primary" asp-controller="Home" asp-action="ViewMenu">مشاهده منو</a>
+        </div>
+    </header>
+</body>
+
+
+@section DiscountBox {
+    @if (ViewBag.Discount > 0)
+    {
+        <partial name="_DiscountBox" model="@ViewBag.Discount" />
+    }
+}
+

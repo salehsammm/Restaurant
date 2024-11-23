@@ -1,0 +1,53 @@
+﻿@model ReserveViewModel
+@{
+    ViewData["Title"] = "رزرو میز";
+}
+
+<h1>رزرو میز</h1>
+<hr />
+
+<form asp-action="ReserveTable">
+
+    <div class="col-md-8 form-group">
+@*         <div class="form-group">
+            <label asp-for="UserName" class="control-label"></label>
+            <input asp-for="UserName" class="form-control" />
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="PhoneNumber" class="control-label"></label>
+            <input asp-for="PhoneNumber" class="form-control" />
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div> *@
+        <div class="form-group">
+            <label asp-for="Date" class="control-label"></label>
+            <input asp-for="Date" class="form-control" />
+            <span asp-validation-for="Date" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Time" class="control-label"></label>
+            <input asp-for="Time" class="form-control" />
+            <span asp-validation-for="Time" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="NumberOfGuest" class="control-label"></label>
+            <input asp-for="NumberOfGuest" class="form-control" />
+            <span asp-validation-for="NumberOfGuest" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="TableNum" class="control-label"></label>
+            <input asp-for="TableNum" class="form-control" />
+            <span asp-validation-for="TableNum" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description" class="control-label"></label>
+            <textarea asp-for="Description" class="form-control"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="ثبت رزرو" class="btn btn-success" />
+        </div>
+
+    </div>
+
+</form>

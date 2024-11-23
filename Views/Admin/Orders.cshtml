@@ -1,0 +1,43 @@
+﻿@model IEnumerable<OrdersViewModel>
+
+@{
+	ViewData["Title"] = "سفارش ها";
+}
+
+
+<h1 class="h1-center">گزارش سفارش ها</h1>
+
+<div class="search-container">
+	<form method="get" asp-controller="Admin" asp-action="Orders">
+		<input type="date" id="orderDate" name="orderDate" class="search-input" style="position: relative;" />
+		<button type="submit" class="search-button">جستجو</button>
+	</form>
+</div>
+
+<table class="table table-striped">
+	<thead class="thead-dark">
+		<tr>
+			<th>نام مشتری</th>
+			<th>آدرس مشتری</th>
+			<th>تاریخ و ساعت</th>
+			<th>قیمت کل</th>
+			<th>وضعیت</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>@item.UserName</td>
+				<td>@item.UserAddress</td>
+				<td>@item.CreateDate</td>
+				<td>@item.TotalPrice</td>
+				<td>@(item.IsFinal ? "اتمام سفارش" : "پرداخت نشده ")</td>
+				<td>
+					<a asp-controller="Admin" asp-action="OrderDetails" asp-route-orderId="@item.Id">جزئیات</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>

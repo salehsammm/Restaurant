@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Reservation>
+
+
+@{
+    ViewData["Title"] = "گزارش رزرو ها";
+}
+
+<h1>رزرو های شما</h1>
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>نام مشتری</th>
+            <th>تلفن همراه</th>
+            <th>تعداد میهمان</th>
+            <th>شماره میز</th>
+            <th>تاریخ و ساعت</th>
+            <th>توضیحات</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.User.FName @item.User.LName</td>
+                <td>@item.User.PhoneNumber</td>
+                <td>@item.NumberOfGuest</td>
+                <td>@item.TableId</td>
+                <td>@item.DateAndTime</td>
+                <td>@item.Description</td>
+                <td>
+                    <a asp-action="RemoveReserve" asp-route-reserveId="@item.Id">حذف</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+    </table>
+

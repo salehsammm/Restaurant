@@ -1,0 +1,55 @@
+﻿@model Restaurant.Models.RegisterViewModel
+
+@{
+	ViewData["Title"] = "Register";
+}
+
+<h1>ثبت نام</h1>
+
+<hr />
+<div class="row">
+	<div class="col-md-12" dir="rtl">
+		<form asp-action="Register">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="form-group">
+				<label asp-for="FName" class="control-label"></label>
+				<input asp-for="FName" class="form-control" />
+				<span asp-validation-for="FName" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="LName" class="control-label"></label>
+				<input asp-for="LName" class="form-control" />
+				<span asp-validation-for="LName" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="PhoneNumber" class="control-label"></label>
+				<input asp-for="PhoneNumber" class="form-control" />
+				<span asp-validation-for="PhoneNumber" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Password" class="control-label"></label>
+				<input asp-for="Password" class="form-control" />
+				<span asp-validation-for="Password" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="RePassword" class="control-label"></label>
+				<input asp-for="RePassword" class="form-control" />
+				<span asp-validation-for="RePassword" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Address" class="control-label"></label>
+				<input asp-for="Address" class="form-control" />
+				<span asp-validation-for="Address" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<input type="submit" value="ثبت نام" class="btn btn-success" />
+			</div>
+		</form>
+	</div>
+</div>
+
+@section Scripts
+{
+	<partial name="_ValidationScriptsPartial" />
+}
+

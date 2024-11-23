@@ -1,0 +1,72 @@
+﻿@model MenuViewModel
+
+
+@{
+	ViewData["Title"] = "منو";
+}
+
+@section DiscountBox {
+	@if (ViewBag.Discount > 0)
+	{
+		<partial name="_DiscountBox" model="@ViewBag.Discount" />
+	}
+}
+
+<section id="menu" class="menu" dir="rtl">
+	<div class="container" data-aos="fade-up">
+
+		<div class="section-header2">
+			<h2>منو</h2>
+			<p> منو ما را<span>چک کنید</span></p>
+		</div>
+
+
+
+		<ul class="nav nav-tabs d-flex justify-content-center" data-aos="fade-up" data-aos-delay="200">
+			@foreach (var item in Model.Types)
+			{
+				<li class="nav-item">
+					<a class="nav-link @(item == Model.Types.First() ? "active" : "")" data-bs-toggle="tab" data-bs-target="#menu-@item.Id">
+						<h4>@item.Name</h4>
+					</a>
+				</li>
+			}
+		</ul>
+
+		<div class="tab-content" data-aos="fade-up" data-aos-delay="300">
+			@foreach (var item in Model.Types)
+			{
+				<div class="tab-pane fade @(item == Model.Types.First() ? "show active" : "")" id="menu-@item.Id">
+					<div class="tab-header text-center">
+						<p>منو</p>
+						<h3>@item.Name</h3>
+					</div>
+
+					<div class="row gy-5">
+						@foreach (var item2 in Model.Foods.Where(f => f.TypeId == item.Id))
+						{
+							<div class="col-md-4 menu-item">
+								<a href="~/Img/Menu/@(item2.ImageName).jpg" class="glightbox">
+									<img src="~/Img/Menu/@(item2.ImageName).jpg" class="menu-img img-fluid" alt="">
+								</a>
+								<h4>@item2.Name</h4>
+								<p class="ingredients">
+									@item2.Description
+								</p>
+								<p class="price">
+									@(item2.Price) تومان 
+								</p>
+								<a class="btn btn-lg btn-primary" asp-controller="Home" asp-action="AddToCart" asp-route-foodId="@item2.Id">افزودن به سبد خرید</a>
+								<br />
+								<br />
+							</div>
+						}
+					</div>
+				</div>
+			}
+		</div>
+	</div>
+</section>
+
+
+
